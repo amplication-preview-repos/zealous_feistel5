@@ -33,8 +33,11 @@ export class BookDataControllerBase {
     return await this.service.createBookData({
       data: data,
       select: {
+        bookTitle: true,
+        contentSummary: true,
         createdAt: true,
         id: true,
+        integrationDate: true,
         updatedAt: true,
       },
     });
@@ -48,8 +51,11 @@ export class BookDataControllerBase {
     return this.service.bookDataItems({
       ...args,
       select: {
+        bookTitle: true,
+        contentSummary: true,
         createdAt: true,
         id: true,
+        integrationDate: true,
         updatedAt: true,
       },
     });
@@ -64,8 +70,11 @@ export class BookDataControllerBase {
     const result = await this.service.bookData({
       where: params,
       select: {
+        bookTitle: true,
+        contentSummary: true,
         createdAt: true,
         id: true,
+        integrationDate: true,
         updatedAt: true,
       },
     });
@@ -89,8 +98,11 @@ export class BookDataControllerBase {
         where: params,
         data: data,
         select: {
+          bookTitle: true,
+          contentSummary: true,
           createdAt: true,
           id: true,
+          integrationDate: true,
           updatedAt: true,
         },
       });
@@ -114,8 +126,11 @@ export class BookDataControllerBase {
       return await this.service.deleteBookData({
         where: params,
         select: {
+          bookTitle: true,
+          contentSummary: true,
           createdAt: true,
           id: true,
+          integrationDate: true,
           updatedAt: true,
         },
       });

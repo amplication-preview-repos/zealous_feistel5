@@ -18,25 +18,37 @@ import { BookDataService } from "../bookData.service";
 const nonExistingId = "nonExistingId";
 const existingId = "existingId";
 const CREATE_INPUT = {
+  bookTitle: "exampleBookTitle",
+  contentSummary: "exampleContentSummary",
   createdAt: new Date(),
   id: "exampleId",
+  integrationDate: new Date(),
   updatedAt: new Date(),
 };
 const CREATE_RESULT = {
+  bookTitle: "exampleBookTitle",
+  contentSummary: "exampleContentSummary",
   createdAt: new Date(),
   id: "exampleId",
+  integrationDate: new Date(),
   updatedAt: new Date(),
 };
 const FIND_MANY_RESULT = [
   {
+    bookTitle: "exampleBookTitle",
+    contentSummary: "exampleContentSummary",
     createdAt: new Date(),
     id: "exampleId",
+    integrationDate: new Date(),
     updatedAt: new Date(),
   },
 ];
 const FIND_ONE_RESULT = {
+  bookTitle: "exampleBookTitle",
+  contentSummary: "exampleContentSummary",
   createdAt: new Date(),
   id: "exampleId",
+  integrationDate: new Date(),
   updatedAt: new Date(),
 };
 
@@ -123,6 +135,7 @@ describe("BookData", () => {
       .expect({
         ...CREATE_RESULT,
         createdAt: CREATE_RESULT.createdAt.toISOString(),
+        integrationDate: CREATE_RESULT.integrationDate.toISOString(),
         updatedAt: CREATE_RESULT.updatedAt.toISOString(),
       });
   });
@@ -135,6 +148,7 @@ describe("BookData", () => {
         {
           ...FIND_MANY_RESULT[0],
           createdAt: FIND_MANY_RESULT[0].createdAt.toISOString(),
+          integrationDate: FIND_MANY_RESULT[0].integrationDate.toISOString(),
           updatedAt: FIND_MANY_RESULT[0].updatedAt.toISOString(),
         },
       ]);
@@ -158,6 +172,7 @@ describe("BookData", () => {
       .expect({
         ...FIND_ONE_RESULT,
         createdAt: FIND_ONE_RESULT.createdAt.toISOString(),
+        integrationDate: FIND_ONE_RESULT.integrationDate.toISOString(),
         updatedAt: FIND_ONE_RESULT.updatedAt.toISOString(),
       });
   });
@@ -171,6 +186,7 @@ describe("BookData", () => {
       .expect({
         ...CREATE_RESULT,
         createdAt: CREATE_RESULT.createdAt.toISOString(),
+        integrationDate: CREATE_RESULT.integrationDate.toISOString(),
         updatedAt: CREATE_RESULT.updatedAt.toISOString(),
       })
       .then(function () {

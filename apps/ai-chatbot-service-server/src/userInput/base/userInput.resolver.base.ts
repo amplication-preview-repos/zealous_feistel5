@@ -17,6 +17,8 @@ import { UserInput } from "./UserInput";
 import { UserInputCountArgs } from "./UserInputCountArgs";
 import { UserInputFindManyArgs } from "./UserInputFindManyArgs";
 import { UserInputFindUniqueArgs } from "./UserInputFindUniqueArgs";
+import { CreateUserInputArgs } from "./CreateUserInputArgs";
+import { UpdateUserInputArgs } from "./UpdateUserInputArgs";
 import { DeleteUserInputArgs } from "./DeleteUserInputArgs";
 import { UserInputService } from "../userInput.service";
 @graphql.Resolver(() => UserInput)
@@ -48,6 +50,35 @@ export class UserInputResolverBase {
       return null;
     }
     return result;
+  }
+
+  @graphql.Mutation(() => UserInput)
+  async createUserInput(
+    @graphql.Args() args: CreateUserInputArgs
+  ): Promise<UserInput> {
+    return await this.service.createUserInput({
+      ...args,
+      data: args.data,
+    });
+  }
+
+  @graphql.Mutation(() => UserInput)
+  async updateUserInput(
+    @graphql.Args() args: UpdateUserInputArgs
+  ): Promise<UserInput | null> {
+    try {
+      return await this.service.updateUserInput({
+        ...args,
+        data: args.data,
+      });
+    } catch (error) {
+      if (isRecordNotFoundError(error)) {
+        throw new GraphQLError(
+          `No resource was found for ${JSON.stringify(args.where)}`
+        );
+      }
+      throw error;
+    }
   }
 
   @graphql.Mutation(() => UserInput)

@@ -14,7 +14,10 @@ export const UserInputList = (props: ListProps): React.ReactElement => {
       <Datagrid rowClick="show">
         <DateField source="createdAt" label="Created At" />
         <TextField label="ID" source="id" />
+        <TextField label="text" source="text" />
+        <TextField label="timestamp" source="timestamp" />
         <DateField source="updatedAt" label="Updated At" />
+        <TextField label="userId" source="userId" />
       </Datagrid>
     </List>
   );

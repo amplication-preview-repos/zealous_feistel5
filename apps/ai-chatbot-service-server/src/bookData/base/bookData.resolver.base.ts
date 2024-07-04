@@ -17,6 +17,8 @@ import { BookData } from "./BookData";
 import { BookDataCountArgs } from "./BookDataCountArgs";
 import { BookDataFindManyArgs } from "./BookDataFindManyArgs";
 import { BookDataFindUniqueArgs } from "./BookDataFindUniqueArgs";
+import { CreateBookDataArgs } from "./CreateBookDataArgs";
+import { UpdateBookDataArgs } from "./UpdateBookDataArgs";
 import { DeleteBookDataArgs } from "./DeleteBookDataArgs";
 import { BookDataService } from "../bookData.service";
 @graphql.Resolver(() => BookData)
@@ -48,6 +50,35 @@ export class BookDataResolverBase {
       return null;
     }
     return result;
+  }
+
+  @graphql.Mutation(() => BookData)
+  async createBookData(
+    @graphql.Args() args: CreateBookDataArgs
+  ): Promise<BookData> {
+    return await this.service.createBookData({
+      ...args,
+      data: args.data,
+    });
+  }
+
+  @graphql.Mutation(() => BookData)
+  async updateBookData(
+    @graphql.Args() args: UpdateBookDataArgs
+  ): Promise<BookData | null> {
+    try {
+      return await this.service.updateBookData({
+        ...args,
+        data: args.data,
+      });
+    } catch (error) {
+      if (isRecordNotFoundError(error)) {
+        throw new GraphQLError(
+          `No resource was found for ${JSON.stringify(args.where)}`
+        );
+      }
+      throw error;
+    }
   }
 
   @graphql.Mutation(() => BookData)

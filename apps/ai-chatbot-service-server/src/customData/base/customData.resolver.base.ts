@@ -17,6 +17,8 @@ import { CustomData } from "./CustomData";
 import { CustomDataCountArgs } from "./CustomDataCountArgs";
 import { CustomDataFindManyArgs } from "./CustomDataFindManyArgs";
 import { CustomDataFindUniqueArgs } from "./CustomDataFindUniqueArgs";
+import { CreateCustomDataArgs } from "./CreateCustomDataArgs";
+import { UpdateCustomDataArgs } from "./UpdateCustomDataArgs";
 import { DeleteCustomDataArgs } from "./DeleteCustomDataArgs";
 import { CustomDataService } from "../customData.service";
 @graphql.Resolver(() => CustomData)
@@ -48,6 +50,35 @@ export class CustomDataResolverBase {
       return null;
     }
     return result;
+  }
+
+  @graphql.Mutation(() => CustomData)
+  async createCustomData(
+    @graphql.Args() args: CreateCustomDataArgs
+  ): Promise<CustomData> {
+    return await this.service.createCustomData({
+      ...args,
+      data: args.data,
+    });
+  }
+
+  @graphql.Mutation(() => CustomData)
+  async updateCustomData(
+    @graphql.Args() args: UpdateCustomDataArgs
+  ): Promise<CustomData | null> {
+    try {
+      return await this.service.updateCustomData({
+        ...args,
+        data: args.data,
+      });
+    } catch (error) {
+      if (isRecordNotFoundError(error)) {
+        throw new GraphQLError(
+          `No resource was found for ${JSON.stringify(args.where)}`
+        );
+      }
+      throw error;
+    }
   }
 
   @graphql.Mutation(() => CustomData)

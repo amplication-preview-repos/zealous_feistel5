@@ -20,24 +20,36 @@ const existingId = "existingId";
 const CREATE_INPUT = {
   createdAt: new Date(),
   id: "exampleId",
+  text: "exampleText",
+  timestamp: new Date(),
   updatedAt: new Date(),
+  userId: "exampleUserId",
 };
 const CREATE_RESULT = {
   createdAt: new Date(),
   id: "exampleId",
+  text: "exampleText",
+  timestamp: new Date(),
   updatedAt: new Date(),
+  userId: "exampleUserId",
 };
 const FIND_MANY_RESULT = [
   {
     createdAt: new Date(),
     id: "exampleId",
+    text: "exampleText",
+    timestamp: new Date(),
     updatedAt: new Date(),
+    userId: "exampleUserId",
   },
 ];
 const FIND_ONE_RESULT = {
   createdAt: new Date(),
   id: "exampleId",
+  text: "exampleText",
+  timestamp: new Date(),
   updatedAt: new Date(),
+  userId: "exampleUserId",
 };
 
 const service = {
@@ -123,6 +135,7 @@ describe("UserInput", () => {
       .expect({
         ...CREATE_RESULT,
         createdAt: CREATE_RESULT.createdAt.toISOString(),
+        timestamp: CREATE_RESULT.timestamp.toISOString(),
         updatedAt: CREATE_RESULT.updatedAt.toISOString(),
       });
   });
@@ -135,6 +148,7 @@ describe("UserInput", () => {
         {
           ...FIND_MANY_RESULT[0],
           createdAt: FIND_MANY_RESULT[0].createdAt.toISOString(),
+          timestamp: FIND_MANY_RESULT[0].timestamp.toISOString(),
           updatedAt: FIND_MANY_RESULT[0].updatedAt.toISOString(),
         },
       ]);
@@ -158,6 +172,7 @@ describe("UserInput", () => {
       .expect({
         ...FIND_ONE_RESULT,
         createdAt: FIND_ONE_RESULT.createdAt.toISOString(),
+        timestamp: FIND_ONE_RESULT.timestamp.toISOString(),
         updatedAt: FIND_ONE_RESULT.updatedAt.toISOString(),
       });
   });
@@ -171,6 +186,7 @@ describe("UserInput", () => {
       .expect({
         ...CREATE_RESULT,
         createdAt: CREATE_RESULT.createdAt.toISOString(),
+        timestamp: CREATE_RESULT.timestamp.toISOString(),
         updatedAt: CREATE_RESULT.updatedAt.toISOString(),
       })
       .then(function () {

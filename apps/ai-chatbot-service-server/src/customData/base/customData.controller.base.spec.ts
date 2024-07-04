@@ -19,25 +19,37 @@ const nonExistingId = "nonExistingId";
 const existingId = "existingId";
 const CREATE_INPUT = {
   createdAt: new Date(),
+  extractedEntityType: "exampleExtractedEntityType",
+  extractionDate: new Date(),
   id: "exampleId",
   updatedAt: new Date(),
+  userProvidedText: "exampleUserProvidedText",
 };
 const CREATE_RESULT = {
   createdAt: new Date(),
+  extractedEntityType: "exampleExtractedEntityType",
+  extractionDate: new Date(),
   id: "exampleId",
   updatedAt: new Date(),
+  userProvidedText: "exampleUserProvidedText",
 };
 const FIND_MANY_RESULT = [
   {
     createdAt: new Date(),
+    extractedEntityType: "exampleExtractedEntityType",
+    extractionDate: new Date(),
     id: "exampleId",
     updatedAt: new Date(),
+    userProvidedText: "exampleUserProvidedText",
   },
 ];
 const FIND_ONE_RESULT = {
   createdAt: new Date(),
+  extractedEntityType: "exampleExtractedEntityType",
+  extractionDate: new Date(),
   id: "exampleId",
   updatedAt: new Date(),
+  userProvidedText: "exampleUserProvidedText",
 };
 
 const service = {
@@ -123,6 +135,7 @@ describe("CustomData", () => {
       .expect({
         ...CREATE_RESULT,
         createdAt: CREATE_RESULT.createdAt.toISOString(),
+        extractionDate: CREATE_RESULT.extractionDate.toISOString(),
         updatedAt: CREATE_RESULT.updatedAt.toISOString(),
       });
   });
@@ -135,6 +148,7 @@ describe("CustomData", () => {
         {
           ...FIND_MANY_RESULT[0],
           createdAt: FIND_MANY_RESULT[0].createdAt.toISOString(),
+          extractionDate: FIND_MANY_RESULT[0].extractionDate.toISOString(),
           updatedAt: FIND_MANY_RESULT[0].updatedAt.toISOString(),
         },
       ]);
@@ -158,6 +172,7 @@ describe("CustomData", () => {
       .expect({
         ...FIND_ONE_RESULT,
         createdAt: FIND_ONE_RESULT.createdAt.toISOString(),
+        extractionDate: FIND_ONE_RESULT.extractionDate.toISOString(),
         updatedAt: FIND_ONE_RESULT.updatedAt.toISOString(),
       });
   });
@@ -171,6 +186,7 @@ describe("CustomData", () => {
       .expect({
         ...CREATE_RESULT,
         createdAt: CREATE_RESULT.createdAt.toISOString(),
+        extractionDate: CREATE_RESULT.extractionDate.toISOString(),
         updatedAt: CREATE_RESULT.updatedAt.toISOString(),
       })
       .then(function () {

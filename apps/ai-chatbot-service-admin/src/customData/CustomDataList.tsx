@@ -13,8 +13,11 @@ export const CustomDataList = (props: ListProps): React.ReactElement => {
     >
       <Datagrid rowClick="show">
         <DateField source="createdAt" label="Created At" />
+        <TextField label="extractedEntityType" source="extractedEntityType" />
+        <TextField label="extractionDate" source="extractionDate" />
         <TextField label="ID" source="id" />
         <DateField source="updatedAt" label="Updated At" />
+        <TextField label="userProvidedText" source="userProvidedText" />
       </Datagrid>
     </List>
   );

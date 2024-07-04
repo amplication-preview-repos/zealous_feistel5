@@ -17,6 +17,8 @@ import { ScrapedData } from "./ScrapedData";
 import { ScrapedDataCountArgs } from "./ScrapedDataCountArgs";
 import { ScrapedDataFindManyArgs } from "./ScrapedDataFindManyArgs";
 import { ScrapedDataFindUniqueArgs } from "./ScrapedDataFindUniqueArgs";
+import { CreateScrapedDataArgs } from "./CreateScrapedDataArgs";
+import { UpdateScrapedDataArgs } from "./UpdateScrapedDataArgs";
 import { DeleteScrapedDataArgs } from "./DeleteScrapedDataArgs";
 import { ScrapedDataService } from "../scrapedData.service";
 @graphql.Resolver(() => ScrapedData)
@@ -48,6 +50,35 @@ export class ScrapedDataResolverBase {
       return null;
     }
     return result;
+  }
+
+  @graphql.Mutation(() => ScrapedData)
+  async createScrapedData(
+    @graphql.Args() args: CreateScrapedDataArgs
+  ): Promise<ScrapedData> {
+    return await this.service.createScrapedData({
+      ...args,
+      data: args.data,
+    });
+  }
+
+  @graphql.Mutation(() => ScrapedData)
+  async updateScrapedData(
+    @graphql.Args() args: UpdateScrapedDataArgs
+  ): Promise<ScrapedData | null> {
+    try {
+      return await this.service.updateScrapedData({
+        ...args,
+        data: args.data,
+      });
+    } catch (error) {
+      if (isRecordNotFoundError(error)) {
+        throw new GraphQLError(
+          `No resource was found for ${JSON.stringify(args.where)}`
+        );
+      }
+      throw error;
+    }
   }
 
   @graphql.Mutation(() => ScrapedData)

@@ -18,25 +18,37 @@ import { ScrapedDataService } from "../scrapedData.service";
 const nonExistingId = "nonExistingId";
 const existingId = "existingId";
 const CREATE_INPUT = {
+  content: "exampleContent",
   createdAt: new Date(),
   id: "exampleId",
+  retrievalDate: new Date(),
+  source: "exampleSource",
   updatedAt: new Date(),
 };
 const CREATE_RESULT = {
+  content: "exampleContent",
   createdAt: new Date(),
   id: "exampleId",
+  retrievalDate: new Date(),
+  source: "exampleSource",
   updatedAt: new Date(),
 };
 const FIND_MANY_RESULT = [
   {
+    content: "exampleContent",
     createdAt: new Date(),
     id: "exampleId",
+    retrievalDate: new Date(),
+    source: "exampleSource",
     updatedAt: new Date(),
   },
 ];
 const FIND_ONE_RESULT = {
+  content: "exampleContent",
   createdAt: new Date(),
   id: "exampleId",
+  retrievalDate: new Date(),
+  source: "exampleSource",
   updatedAt: new Date(),
 };
 
@@ -123,6 +135,7 @@ describe("ScrapedData", () => {
       .expect({
         ...CREATE_RESULT,
         createdAt: CREATE_RESULT.createdAt.toISOString(),
+        retrievalDate: CREATE_RESULT.retrievalDate.toISOString(),
         updatedAt: CREATE_RESULT.updatedAt.toISOString(),
       });
   });
@@ -135,6 +148,7 @@ describe("ScrapedData", () => {
         {
           ...FIND_MANY_RESULT[0],
           createdAt: FIND_MANY_RESULT[0].createdAt.toISOString(),
+          retrievalDate: FIND_MANY_RESULT[0].retrievalDate.toISOString(),
           updatedAt: FIND_MANY_RESULT[0].updatedAt.toISOString(),
         },
       ]);
@@ -158,6 +172,7 @@ describe("ScrapedData", () => {
       .expect({
         ...FIND_ONE_RESULT,
         createdAt: FIND_ONE_RESULT.createdAt.toISOString(),
+        retrievalDate: FIND_ONE_RESULT.retrievalDate.toISOString(),
         updatedAt: FIND_ONE_RESULT.updatedAt.toISOString(),
       });
   });
@@ -171,6 +186,7 @@ describe("ScrapedData", () => {
       .expect({
         ...CREATE_RESULT,
         createdAt: CREATE_RESULT.createdAt.toISOString(),
+        retrievalDate: CREATE_RESULT.retrievalDate.toISOString(),
         updatedAt: CREATE_RESULT.updatedAt.toISOString(),
       })
       .then(function () {

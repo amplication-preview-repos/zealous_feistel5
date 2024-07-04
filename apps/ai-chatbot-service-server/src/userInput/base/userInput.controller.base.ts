@@ -35,7 +35,10 @@ export class UserInputControllerBase {
       select: {
         createdAt: true,
         id: true,
+        text: true,
+        timestamp: true,
         updatedAt: true,
+        userId: true,
       },
     });
   }
@@ -50,7 +53,10 @@ export class UserInputControllerBase {
       select: {
         createdAt: true,
         id: true,
+        text: true,
+        timestamp: true,
         updatedAt: true,
+        userId: true,
       },
     });
   }
@@ -66,7 +72,10 @@ export class UserInputControllerBase {
       select: {
         createdAt: true,
         id: true,
+        text: true,
+        timestamp: true,
         updatedAt: true,
+        userId: true,
       },
     });
     if (result === null) {
@@ -91,7 +100,10 @@ export class UserInputControllerBase {
         select: {
           createdAt: true,
           id: true,
+          text: true,
+          timestamp: true,
           updatedAt: true,
+          userId: true,
         },
       });
     } catch (error) {
@@ -116,7 +128,10 @@ export class UserInputControllerBase {
         select: {
           createdAt: true,
           id: true,
+          text: true,
+          timestamp: true,
           updatedAt: true,
+          userId: true,
         },
       });
     } catch (error) {

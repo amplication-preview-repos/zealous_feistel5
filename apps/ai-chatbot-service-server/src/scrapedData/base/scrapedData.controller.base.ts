@@ -33,8 +33,11 @@ export class ScrapedDataControllerBase {
     return await this.service.createScrapedData({
       data: data,
       select: {
+        content: true,
         createdAt: true,
         id: true,
+        retrievalDate: true,
+        source: true,
         updatedAt: true,
       },
     });
@@ -50,8 +53,11 @@ export class ScrapedDataControllerBase {
     return this.service.scrapedDataItems({
       ...args,
       select: {
+        content: true,
         createdAt: true,
         id: true,
+        retrievalDate: true,
+        source: true,
         updatedAt: true,
       },
     });
@@ -66,8 +72,11 @@ export class ScrapedDataControllerBase {
     const result = await this.service.scrapedData({
       where: params,
       select: {
+        content: true,
         createdAt: true,
         id: true,
+        retrievalDate: true,
+        source: true,
         updatedAt: true,
       },
     });
@@ -91,8 +100,11 @@ export class ScrapedDataControllerBase {
         where: params,
         data: data,
         select: {
+          content: true,
           createdAt: true,
           id: true,
+          retrievalDate: true,
+          source: true,
           updatedAt: true,
         },
       });
@@ -116,8 +128,11 @@ export class ScrapedDataControllerBase {
       return await this.service.deleteScrapedData({
         where: params,
         select: {
+          content: true,
           createdAt: true,
           id: true,
+          retrievalDate: true,
+          source: true,
           updatedAt: true,
         },
       });

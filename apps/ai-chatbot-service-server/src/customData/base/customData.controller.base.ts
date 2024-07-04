@@ -34,8 +34,11 @@ export class CustomDataControllerBase {
       data: data,
       select: {
         createdAt: true,
+        extractedEntityType: true,
+        extractionDate: true,
         id: true,
         updatedAt: true,
+        userProvidedText: true,
       },
     });
   }
@@ -49,8 +52,11 @@ export class CustomDataControllerBase {
       ...args,
       select: {
         createdAt: true,
+        extractedEntityType: true,
+        extractionDate: true,
         id: true,
         updatedAt: true,
+        userProvidedText: true,
       },
     });
   }
@@ -65,8 +71,11 @@ export class CustomDataControllerBase {
       where: params,
       select: {
         createdAt: true,
+        extractedEntityType: true,
+        extractionDate: true,
         id: true,
         updatedAt: true,
+        userProvidedText: true,
       },
     });
     if (result === null) {
@@ -90,8 +99,11 @@ export class CustomDataControllerBase {
         data: data,
         select: {
           createdAt: true,
+          extractedEntityType: true,
+          extractionDate: true,
           id: true,
           updatedAt: true,
+          userProvidedText: true,
         },
       });
     } catch (error) {
@@ -115,8 +127,11 @@ export class CustomDataControllerBase {
         where: params,
         select: {
           createdAt: true,
+          extractedEntityType: true,
+          extractionDate: true,
           id: true,
           updatedAt: true,
+          userProvidedText: true,
         },
       });
     } catch (error) {
